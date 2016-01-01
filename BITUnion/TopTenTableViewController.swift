@@ -136,12 +136,17 @@ class TopTenTableViewController: UITableViewController {
       cell.replayContent.attributedText = NSAttributedString(string: (content?.stringByRemovingPercentEncoding)!)
       let replayAuthor = (replyDict["who"] as? String)! + "回复了主题"
       cell.replayAuthorLabel.text = replayAuthor.stringByRemovingPercentEncoding
-      cell.replyTimeLabel.text = replyDict["when"] as? String
+      let timeString = replyDict["when"] as? String
+      cell.replyTimeLabel.text = timeString
       let tid = dict["tid"] as! String
       cell.tid = tid
       let totalNum = dict["tid_sum"] as! String
       cell.totalNum = Int(totalNum)!
     }
+  }
+  
+  func convertDatetoRelativeTime(time:String) -> String {
+    return ""
   }
 
   override func viewWillDisappear(animated: Bool) {
