@@ -7,21 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C0143861C93EB8E009A2EBB /* defaultUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0143851C93EB8E009A2EBB /* defaultUser.swift */; };
+		4C0143881C93F535009A2EBB /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0143871C93F535009A2EBB /* AppData.swift */; };
+		4C01438A1C94027D009A2EBB /* String+Decoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0143891C94027D009A2EBB /* String+Decoding.swift */; };
+		4C01438E1C945AD9009A2EBB /* data in Resources */ = {isa = PBXBuildFile; fileRef = 4C01438D1C945AD9009A2EBB /* data */; };
+		4C35D4211C9109E000797F31 /* FourmListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C35D4201C9109E000797F31 /* FourmListViewController.swift */; };
 		4CD063801C901144003554C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD0637F1C901144003554C0 /* AppDelegate.swift */; };
-		4CD063821C901144003554C0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD063811C901144003554C0 /* ViewController.swift */; };
+		4CD063821C901144003554C0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD063811C901144003554C0 /* LoginViewController.swift */; };
 		4CD063851C901144003554C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CD063831C901144003554C0 /* Main.storyboard */; };
 		4CD063871C901144003554C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CD063861C901144003554C0 /* Assets.xcassets */; };
-		4CD0638A1C901144003554C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CD063881C901144003554C0 /* LaunchScreen.storyboard */; };
+		4CD91B471C95090400B01D6B /* FourmDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD91B461C95090400B01D6B /* FourmDetailViewController.swift */; };
+		4CD91B491C955ECA00B01D6B /* FourmTopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD91B481C955ECA00B01D6B /* FourmTopicCell.swift */; };
+		4CD91B4B1C95603800B01D6B /* FourmTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CD91B4A1C95603800B01D6B /* FourmTopicCell.xib */; };
+		A996131C22BDB42645618238 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D06E5813E32AB23C920B0EA3 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		36954C9298F46C2DB6C3DDBD /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		4C0143851C93EB8E009A2EBB /* defaultUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = defaultUser.swift; sourceTree = "<group>"; };
+		4C0143871C93F535009A2EBB /* AppData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
+		4C0143891C94027D009A2EBB /* String+Decoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Decoding.swift"; sourceTree = "<group>"; };
+		4C01438D1C945AD9009A2EBB /* data */ = {isa = PBXFileReference; lastKnownFileType = folder; path = data; sourceTree = "<group>"; };
+		4C35D4201C9109E000797F31 /* FourmListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourmListViewController.swift; sourceTree = "<group>"; };
 		4CD0637C1C901144003554C0 /* BITUnion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BITUnion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CD0637F1C901144003554C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4CD063811C901144003554C0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4CD063811C901144003554C0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4CD063841C901144003554C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4CD063861C901144003554C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		4CD063891C901144003554C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4CD0638B1C901144003554C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4CD91B461C95090400B01D6B /* FourmDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourmDetailViewController.swift; sourceTree = "<group>"; };
+		4CD91B481C955ECA00B01D6B /* FourmTopicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourmTopicCell.swift; sourceTree = "<group>"; };
+		4CD91B4A1C95603800B01D6B /* FourmTopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FourmTopicCell.xib; sourceTree = "<group>"; };
+		AD9987D9E94D248A04D551BB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		D06E5813E32AB23C920B0EA3 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +47,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A996131C22BDB42645618238 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		32F9E8465234413B4B3176C7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D06E5813E32AB23C920B0EA3 /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		4CD063731C901144003554C0 = {
 			isa = PBXGroup;
 			children = (
 				4CD0637E1C901144003554C0 /* BITUnion */,
 				4CD0637D1C901144003554C0 /* Products */,
+				6783723E8809D8422CE658D6 /* Pods */,
+				32F9E8465234413B4B3176C7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +83,30 @@
 		4CD0637E1C901144003554C0 /* BITUnion */ = {
 			isa = PBXGroup;
 			children = (
+				4C01438D1C945AD9009A2EBB /* data */,
 				4CD0637F1C901144003554C0 /* AppDelegate.swift */,
-				4CD063811C901144003554C0 /* ViewController.swift */,
+				4CD063811C901144003554C0 /* LoginViewController.swift */,
+				4C35D4201C9109E000797F31 /* FourmListViewController.swift */,
+				4CD91B461C95090400B01D6B /* FourmDetailViewController.swift */,
 				4CD063831C901144003554C0 /* Main.storyboard */,
 				4CD063861C901144003554C0 /* Assets.xcassets */,
-				4CD063881C901144003554C0 /* LaunchScreen.storyboard */,
 				4CD0638B1C901144003554C0 /* Info.plist */,
+				4C0143851C93EB8E009A2EBB /* defaultUser.swift */,
+				4C0143871C93F535009A2EBB /* AppData.swift */,
+				4C0143891C94027D009A2EBB /* String+Decoding.swift */,
+				4CD91B481C955ECA00B01D6B /* FourmTopicCell.swift */,
+				4CD91B4A1C95603800B01D6B /* FourmTopicCell.xib */,
 			);
 			path = BITUnion;
+			sourceTree = "<group>";
+		};
+		6783723E8809D8422CE658D6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				36954C9298F46C2DB6C3DDBD /* Pods.debug.xcconfig */,
+				AD9987D9E94D248A04D551BB /* Pods.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +116,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4CD0638E1C901144003554C0 /* Build configuration list for PBXNativeTarget "BITUnion" */;
 			buildPhases = (
+				FA525F1261BF14458E78FC66 /* Check Pods Manifest.lock */,
 				4CD063781C901144003554C0 /* Sources */,
 				4CD063791C901144003554C0 /* Frameworks */,
 				4CD0637A1C901144003554C0 /* Resources */,
+				497A00A5DFF829A21B759F59 /* Embed Pods Frameworks */,
+				574CDF8BE93B5EC2F6D97F3E /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -96,6 +144,7 @@
 				TargetAttributes = {
 					4CD0637B1C901144003554C0 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 959XA2RWWU;
 					};
 				};
 			};
@@ -122,21 +171,76 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4CD0638A1C901144003554C0 /* LaunchScreen.storyboard in Resources */,
 				4CD063871C901144003554C0 /* Assets.xcassets in Resources */,
+				4C01438E1C945AD9009A2EBB /* data in Resources */,
 				4CD063851C901144003554C0 /* Main.storyboard in Resources */,
+				4CD91B4B1C95603800B01D6B /* FourmTopicCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		497A00A5DFF829A21B759F59 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		574CDF8BE93B5EC2F6D97F3E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FA525F1261BF14458E78FC66 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4CD063781C901144003554C0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4CD063821C901144003554C0 /* ViewController.swift in Sources */,
+				4C0143861C93EB8E009A2EBB /* defaultUser.swift in Sources */,
+				4C35D4211C9109E000797F31 /* FourmListViewController.swift in Sources */,
+				4CD063821C901144003554C0 /* LoginViewController.swift in Sources */,
 				4CD063801C901144003554C0 /* AppDelegate.swift in Sources */,
+				4CD91B471C95090400B01D6B /* FourmDetailViewController.swift in Sources */,
+				4C0143881C93F535009A2EBB /* AppData.swift in Sources */,
+				4C01438A1C94027D009A2EBB /* String+Decoding.swift in Sources */,
+				4CD91B491C955ECA00B01D6B /* FourmTopicCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,14 +253,6 @@
 				4CD063841C901144003554C0 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		4CD063881C901144003554C0 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4CD063891C901144003554C0 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -245,23 +341,31 @@
 		};
 		4CD0638F1C901144003554C0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 36954C9298F46C2DB6C3DDBD /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = BITUnion/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.bit.michael.BITUnion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
 		4CD063901C901144003554C0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AD9987D9E94D248A04D551BB /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = BITUnion/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.bit.michael.BITUnion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -284,6 +388,7 @@
 				4CD063901C901144003554C0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
