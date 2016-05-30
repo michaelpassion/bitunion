@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -14,60 +14,52 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="92.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="主题主题主题主题主题主题主题主题主题主题" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQY-6g-syt">
-                        <rect key="frame" x="8" y="10" width="304" height="48"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                        <color key="textColor" red="0.13333333333333333" green="0.19215686274509802" blue="0.24705882352941178" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="751" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cwi-6t-PmH">
-                        <rect key="frame" x="79" y="64" width="33.5" height="20.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="74" y="66.5" width="30" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.20392156859999999" green="0.28627450980000002" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="751" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" misplaced="YES" text="20/20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cGE-b2-UYl">
-                        <rect key="frame" x="268" y="65" width="43.5" height="19.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="751" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="20/20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cGE-b2-UYl">
+                        <rect key="frame" x="270" y="66.5" width="41.5" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.015686274510000001" green="0.66274509800000003" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="751" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="author" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ls-3a-7qr">
-                        <rect key="frame" x="8" y="64" width="50" height="20.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="8" y="65.5" width="45" height="18.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.015686274510000001" green="0.66274509800000003" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="751" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" misplaced="YES" text="回复/阅读：" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Smn-P5-YfP">
-                        <rect key="frame" x="196" y="66" width="80" height="18"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="751" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="回复/阅读：" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Smn-P5-YfP">
+                        <rect key="frame" x="203" y="67" width="75" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.1333333333" green="0.19215686269999999" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="主题主题主题主题主题主题主题主题主题主题" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQY-6g-syt">
+                        <rect key="frame" x="8" y="9" width="304" height="49.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.13333333333333333" green="0.19215686274509802" blue="0.24705882352941178" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="sQY-6g-syt" firstAttribute="top" secondItem="4Pu-Ni-hm0" secondAttribute="top" constant="10" id="16A-AU-Kdx"/>
+                    <constraint firstItem="sQY-6g-syt" firstAttribute="top" secondItem="4Pu-Ni-hm0" secondAttribute="top" constant="9" id="16A-AU-Kdx"/>
                     <constraint firstAttribute="bottom" secondItem="cGE-b2-UYl" secondAttribute="bottom" constant="8" id="2i5-mh-jKE"/>
                     <constraint firstAttribute="bottom" secondItem="6ls-3a-7qr" secondAttribute="bottom" constant="8" id="7Cx-aC-bIp"/>
                     <constraint firstAttribute="trailing" secondItem="sQY-6g-syt" secondAttribute="trailing" constant="8" id="8Us-Wg-Q6U"/>
                     <constraint firstItem="sQY-6g-syt" firstAttribute="leading" secondItem="4Pu-Ni-hm0" secondAttribute="leading" constant="8" id="9uA-c2-yec"/>
                     <constraint firstItem="6ls-3a-7qr" firstAttribute="leading" secondItem="4Pu-Ni-hm0" secondAttribute="leading" constant="8" id="CLk-FE-UaJ"/>
-                    <constraint firstItem="Cwi-6t-PmH" firstAttribute="top" relation="greaterThanOrEqual" secondItem="sQY-6g-syt" secondAttribute="bottom" constant="6" id="Hid-0u-qrM"/>
                     <constraint firstItem="Cwi-6t-PmH" firstAttribute="leading" secondItem="6ls-3a-7qr" secondAttribute="trailing" constant="21" id="Ury-d1-ukA"/>
-                    <constraint firstItem="Smn-P5-YfP" firstAttribute="top" secondItem="sQY-6g-syt" secondAttribute="bottom" constant="6" id="W3z-yk-Kri"/>
-                    <constraint firstItem="6ls-3a-7qr" firstAttribute="top" secondItem="sQY-6g-syt" secondAttribute="bottom" constant="6" id="ck1-iu-XgI"/>
+                    <constraint firstItem="6ls-3a-7qr" firstAttribute="top" secondItem="sQY-6g-syt" secondAttribute="bottom" constant="7" id="ck1-iu-XgI"/>
                     <constraint firstItem="Cwi-6t-PmH" firstAttribute="baseline" secondItem="6ls-3a-7qr" secondAttribute="baseline" id="ctq-ga-NSt"/>
                     <constraint firstAttribute="trailing" secondItem="cGE-b2-UYl" secondAttribute="trailing" constant="8" id="quJ-Cq-oZN"/>
                     <constraint firstItem="cGE-b2-UYl" firstAttribute="leading" secondItem="Smn-P5-YfP" secondAttribute="trailing" constant="-8" id="tfQ-4V-vIh"/>
                     <constraint firstItem="Smn-P5-YfP" firstAttribute="baseline" secondItem="cGE-b2-UYl" secondAttribute="baseline" id="tgT-Q0-As2"/>
-                    <constraint firstItem="cGE-b2-UYl" firstAttribute="top" secondItem="sQY-6g-syt" secondAttribute="bottom" constant="7" id="yae-eV-oPu"/>
+                    <constraint firstItem="cGE-b2-UYl" firstAttribute="top" secondItem="sQY-6g-syt" secondAttribute="bottom" constant="8" id="yae-eV-oPu"/>
                 </constraints>
-                <variation key="default">
-                    <mask key="constraints">
-                        <exclude reference="Hid-0u-qrM"/>
-                        <exclude reference="W3z-yk-Kri"/>
-                    </mask>
-                </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="authorLabel" destination="6ls-3a-7qr" id="yeT-Sa-QPT"/>

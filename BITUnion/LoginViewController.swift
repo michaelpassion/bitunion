@@ -18,6 +18,7 @@ class LoginViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
+    loginButtonPressed()
     
   }
   
@@ -26,7 +27,7 @@ class LoginViewController: UIViewController {
     // Dispose of any resources that can be recreated.
   }
 
-  @IBAction func loginButtonPressed(sender: UIButton) {
+  @IBAction func loginButtonPressed() {
         let nameTextView = view.viewWithTag(1000) as! UITextField
         let pswTextView = view.viewWithTag(1001) as! UITextField
     
@@ -46,13 +47,6 @@ class LoginViewController: UIViewController {
               do {
                 let jsonDict = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
                 print(jsonDict)
-                let userDefault = NSUserDefaults.standardUserDefaults()
-                userDefault.setValue(jsonDict["session"], forKey: "session")
-                userDefault.setValue(jsonDict["uid"], forKey: "uid")
-                userDefault.setValue(jsonDict["status"], forKey: "status")
-                userDefault.setValue(jsonDict["credit"], forKey: "credit")
-                userDefault.setValue(jsonDict["username"], forKey: "username")
-                userDefault.setValue(psw, forKey: "password")
                 AppData.sharedInstance.isLogin = true
                 AppData.sharedInstance.username = jsonDict.objectForKey("username") as! String
                 AppData.sharedInstance.password = psw

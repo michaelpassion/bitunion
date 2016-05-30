@@ -26,10 +26,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
   
   func customizeAppearance() {
-    let barTintColor = UIColor(red: 141/255, green: 198/255, blue: 255/255, alpha: 1)
+    let barTintColor = UIColor(red: 102/255, green: 153/255, blue: 255/255, alpha: 1)
     UINavigationBar.appearance().barTintColor = barTintColor
-    UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor(red: 34/255, green: 49/255, blue: 63/255, alpha: 1)]
-
+    UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+    UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
   }
 
   func showloginScreen(animated: Bool) {
