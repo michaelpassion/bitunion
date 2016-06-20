@@ -18,7 +18,7 @@ class LoginViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
-    loginButtonPressed()
+//    loginButtonPressed()
     
   }
   
@@ -37,33 +37,42 @@ class LoginViewController: UIViewController {
                         "username":name,
                         "password":psw]
 
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-  
-          Alamofire.request(.POST, "http://out.bitunion.org/open_api/bu_logging.php", parameters: parameters, encoding: .JSON, headers: nil).response(completionHandler: { (urlRequest, response, data, error) -> Void in
+          UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+          
+          let urlString = AppData.getPostURLWithlastComponent("bu_logging.php")
+          
+          Alamofire.request(
+            .POST,
+            urlString,
+            parameters: parameters,
+            encoding: .JSON,
+            headers: nil)
+            .response(completionHandler: {
+              (urlRequest, response, data, error) -> Void in
              UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-        if let httpResponse = response where
-          httpResponse.statusCode == 200 {
-            if let data = data {
-              do {
-                let jsonDict = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
-                print(jsonDict)
-                AppData.sharedInstance.isLogin = true
-                AppData.sharedInstance.username = jsonDict.objectForKey("username") as! String
-                AppData.sharedInstance.password = psw
-                AppData.sharedInstance.session = jsonDict.objectForKey("session") as! String
-                
-                self.dismissViewControllerAnimated(false, completion: nil)
-              } catch {
-                print("json serial error")
-              }
-            }
-        } else {
-          dispatch_async(dispatch_get_main_queue()) {
-            self.showNetWorkError()
+              if let httpResponse = response where
+                httpResponse.statusCode == 200 {
+                  if let jsonData = data {
+                    do {
+                      let jsonDict = try NSJSONSerialization.JSONObjectWithData(jsonData, options: .AllowFragments)
+                      print(jsonDict)
+                      AppData.sharedInstance.isLogin = true
+                      AppData.sharedInstance.username = jsonDict.objectForKey("username") as! String
+                      AppData.sharedInstance.password = psw
+                      AppData.sharedInstance.session = jsonDict.objectForKey("session") as! String
+                      self.dismissViewControllerAnimated(false, completion: nil)
+                    } catch let error as NSError {
+                      // failure
+                      print("Fetch failed: \(error.localizedDescription)")
+                    }
+                }
+              } else {
+                dispatch_async(dispatch_get_main_queue()) { [unowned self] in
+                  self.showNetWorkError()
+                }
+                  }
+              })
           }
-            }
-        })
-    }
   }
   
  
@@ -85,6 +94,7 @@ class LoginViewController: UIViewController {
           print(jsonDict)
           if jsonDict.valueForKey("result") as! String == "success" {
             print("logout success")
+            AppData.sharedInstance.isLogin = false
           }
         } catch {
         }

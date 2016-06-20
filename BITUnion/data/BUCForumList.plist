@@ -3,6 +3,19 @@
 <plist version="1.0">
 <array>
 	<dict>
+		<key>list</key>
+		<array>
+			<dict>
+				<key>fid</key>
+				<string>177 </string>
+				<key>name</key>
+				<string>test</string>
+			</dict>
+		</array>
+		<key>name</key>
+		<string>测试</string>
+	</dict>
+	<dict>
 		<key>name</key>
 		<string>系统管理区</string>
 		<key>list</key>

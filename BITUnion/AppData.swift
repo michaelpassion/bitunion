@@ -31,17 +31,18 @@ class AppData {
     return AppData.sharedInstance.isOutofSchool ? outofSchool + last : inSchool + last
   }
   class func updateSession(completionBlock:()->()) {
+    
     let parameters = ["action":"login",
                       "username":AppData.sharedInstance.username,
                       "password":AppData.sharedInstance.password]
     
-    UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-    
-    let hud = MBProgressHUD(window:UIApplication.sharedApplication().keyWindow)
-    hud.mode = .AnnularDeterminate
-    hud.labelText = "重新登录中"
-    hud.show(true)
-    
+//    UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+//
+//    let hud = MBProgressHUD(window:UIApplication.sharedApplication().keyWindow)
+//    hud.mode = .AnnularDeterminate
+//    hud.labelText = "重新登录中"
+//    hud.show(true)
+//    
     let urlString = AppData.getPostURLWithlastComponent("bu_logging.php")
     Alamofire.request(.POST, urlString, parameters: parameters, encoding: .JSON, headers: nil).response(completionHandler: { (urlRequest, response, data, error) -> Void in
       UIApplication.sharedApplication().networkActivityIndicatorVisible = false
@@ -50,6 +51,7 @@ class AppData {
         if let data = data {
           do {
             let jsonDict = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
+            
             AppData.sharedInstance.isLogin = true
             AppData.sharedInstance.session = jsonDict.objectForKey("session") as! String
             completionBlock()
@@ -69,4 +71,5 @@ class AppData {
 //      hud.hide(true)
     })
   }
+
 }

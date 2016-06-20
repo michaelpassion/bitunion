@@ -20,6 +20,8 @@ class FourmTopicCell: UITableViewCell {
   var totalNum = 0
   
   override func prepareForReuse() {
+    super.prepareForReuse()
+
     topicLabel.text = ""
     authorLabel.text = ""
     postTimeLabel.text = ""

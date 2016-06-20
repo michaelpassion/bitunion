@@ -24,14 +24,23 @@ class FourmListViewController: UITableViewController {
     } else {
         print("file not exist")
     }
-    tableView.tableFooterView = UIView(frame: CGRect.zero)
+//    tableView.tableFooterView = UIView(frame: CGRect.zero)
     self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.Plain, target:nil, action:nil)
 
   }
   
+  func showloginScreen(animated: Bool) {
+    let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+    let loginViewController = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
+    self.presentViewController(loginViewController, animated: animated, completion: nil)
+  }
+  
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
-    self.tabBarController?.tabBar.hidden = false
+    if !AppData.sharedInstance.isLogin {
+      showloginScreen(true)
+    }
+
   }
   
   func documentsDirectory() -> String {
@@ -42,8 +51,6 @@ class FourmListViewController: UITableViewController {
   func dataFilepath() -> String {
     return (self.nibBundle?.pathForResource("data/BUCForumList", ofType: "plist"))!
   }
-  
-  
 }
 
 
@@ -95,15 +102,15 @@ extension FourmListViewController {
       controller.navigationBar.title = subDict.objectForKey("name") as? String
     }
   }
-  override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-    let sections = tableView.numberOfSections
-    if (section == sections - 1) {
-      let tabBarHeight = self.tabBarController?.tabBar.frame.height;
-      return  tabBarHeight! + 5
-    } else {
-      return 0
-    }
-    
-  }
+//  override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//    let sections = tableView.numberOfSections
+//    if (section == sections - 1) {
+//      let tabBarHeight = self.tabBarController?.tabBar.frame.height;
+//      return  tabBarHeight! + 5
+//    } else {
+//      return 0
+//    }
+//    
+//  }
   
 }

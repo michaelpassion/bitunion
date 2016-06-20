@@ -10,8 +10,6 @@ import UIKit
 import Alamofire
 import MJRefresh
 import DTCoreText
-import MediaPlayer
-import QuartzCore
 import SDWebImage
 
 
@@ -24,21 +22,15 @@ class TopicDetailTableViewController: UITableViewController
   var totalNum = 0
   var topicDetailList:NSMutableArray = []
   let header = MJRefreshNormalHeader()
+  var topicTitle = ""
   
   let footer = MJRefreshAutoStateFooter()
   var request: Alamofire.Request?
-  var threads = [BITThread]()
   var lastActionLink:NSURL?
   
   var mediaPlayers:NSMutableSet = []
   var firstPullDown =  true
-  
-//
-//  override func viewWillAppear(animated: Bool) {
-//    super.viewWillAppear(animated);
-//    firstPullDown = true
-//
-//  }
+
   override func viewDidLoad() {
     registCell()
     tableView.tableFooterView = UIView(frame: CGRect.zero)
@@ -46,6 +38,7 @@ class TopicDetailTableViewController: UITableViewController
   
     header.setRefreshingTarget(self, refreshingAction: #selector(TopicDetailTableViewController.headerRefresh))
     self.tableView.mj_header = header
+    
     header.lastUpdatedTimeLabel.hidden = true
     footer.setRefreshingTarget(self, refreshingAction: #selector(TopicDetailTableViewController.footerRefresh))
     self.tableView.mj_footer = footer
@@ -54,10 +47,9 @@ class TopicDetailTableViewController: UITableViewController
     self.tableView.estimatedRowHeight = 88.0;
   
     footer.setTitle("", forState: .Idle)
-    headerRefresh()
+    
     self.tableView.mj_header.beginRefreshing()
     self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.Plain, target:nil, action:nil)
-
   }
   
   
@@ -180,6 +172,8 @@ class TopicDetailTableViewController: UITableViewController
     cell.message.shouldDrawLinks = false
     cell.message.shouldDrawImages = false
     cell.message.delegate = cell
+    cell.tid = self.tid
+    cell.topicText = self.topicTitle
     let dict = topicDetailList[indexPath.row] as! NSDictionary
     
     let index = indexPath.row
@@ -289,6 +283,18 @@ class TopicDetailTableViewController: UITableViewController
           }
         }
       }
+  }
+  
+  
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == "REPLYTOAUTHOR" {
+      let navigationController = segue.destinationViewController as! UINavigationController
+      let controller = navigationController.viewControllers.first as! PostNewTopicViewController
+      controller.title = "回复"
+      controller.topicText = self.topicTitle
+      controller.isReplay = true
+      controller.tid = self.tid
+    }
   }
   
 }

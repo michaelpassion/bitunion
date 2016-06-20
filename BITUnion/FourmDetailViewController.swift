@@ -35,11 +35,10 @@ class FourmDetailViewController: UITableViewController {
     footer.setRefreshingTarget(self, refreshingAction: #selector(FourmDetailViewController.footerRefresh))
     self.tableView.mj_footer = footer
     headerRefresh()
-    self.tabBarController?.tabBar.hidden = true
     tableView.tableFooterView = UIView(frame: CGRect.zero)
     self.tableView.mj_header.beginRefreshing()
+    
     self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.Plain, target:nil, action:nil)
-
   }
   
   func headerRefresh() {
@@ -61,7 +60,15 @@ class FourmDetailViewController: UITableViewController {
     tableView.registerNib(cellNib, forCellReuseIdentifier: "FourmTopicCellIdentifier")
   }
   
+//  func showloginScreen(animated: Bool) {
+//    let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+//    let loginViewController = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
+//    self.presentViewController(loginViewController, animated: animated, completion: nil)
+//  }
+//  
   func performSearch() {
+    
+    
     let parameters = [
       "action":"thread",
       "username":AppData.sharedInstance.username,
@@ -187,6 +194,7 @@ class FourmDetailViewController: UITableViewController {
       let cell = sender as! FourmTopicCell
       controller.tid = cell.tid
       controller.totalNum = cell.totalNum
+      controller.topicTitle = cell.topicLabel.text!
     } else if segue.identifier == "PostNewThread" {
       let navigationController = segue.destinationViewController as! UINavigationController
       let controller = navigationController.viewControllers.first as! PostNewTopicViewController

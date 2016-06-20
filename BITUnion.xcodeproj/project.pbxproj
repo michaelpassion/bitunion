@@ -12,6 +12,7 @@
 		4C2AF8FD1CD19E4000383A4F /* PostNewTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2AF8FC1CD19E4000383A4F /* PostNewTopicViewController.swift */; };
 		4C35D4211C9109E000797F31 /* FourmListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C35D4201C9109E000797F31 /* FourmListViewController.swift */; };
 		4C75821F1CFB3F6E00131F96 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C75821E1CFB3F6E00131F96 /* SettingViewController.swift */; };
+		4C7763BE1D0080AC00613AFB /* TopTenTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7763BD1D0080AC00613AFB /* TopTenTableViewController.swift */; };
 		4C8673C01C9E5DDE00A89C04 /* TopicDetailTextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8673BF1C9E5DDE00A89C04 /* TopicDetailTextViewCell.swift */; };
 		4CA97FBC1CA3E5CA001D7D9B /* BITStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA97FBB1CA3E5CA001D7D9B /* BITStructs.swift */; };
 		4CCA4D3F1CABFD2D0076AF2E /* defaultAvantar.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4CCA4D3E1CABFD2D0076AF2E /* defaultAvantar.gif */; };
@@ -20,6 +21,7 @@
 		4CD063821C901144003554C0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD063811C901144003554C0 /* LoginViewController.swift */; };
 		4CD063851C901144003554C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CD063831C901144003554C0 /* Main.storyboard */; };
 		4CD063871C901144003554C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CD063861C901144003554C0 /* Assets.xcassets */; };
+		4CD06DD41D0520190098D6C8 /* TopTenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD06DD31D0520190098D6C8 /* TopTenTableViewCell.swift */; };
 		4CD91B471C95090400B01D6B /* FourmDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD91B461C95090400B01D6B /* FourmDetailViewController.swift */; };
 		4CD91B491C955ECA00B01D6B /* FourmTopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD91B481C955ECA00B01D6B /* FourmTopicCell.swift */; };
 		4CD91B4B1C95603800B01D6B /* FourmTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CD91B4A1C95603800B01D6B /* FourmTopicCell.xib */; };
@@ -616,6 +618,7 @@
 		4C2AF8FC1CD19E4000383A4F /* PostNewTopicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostNewTopicViewController.swift; sourceTree = "<group>"; };
 		4C35D4201C9109E000797F31 /* FourmListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourmListViewController.swift; sourceTree = "<group>"; };
 		4C75821E1CFB3F6E00131F96 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		4C7763BD1D0080AC00613AFB /* TopTenTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopTenTableViewController.swift; sourceTree = "<group>"; };
 		4C8673BF1C9E5DDE00A89C04 /* TopicDetailTextViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicDetailTextViewCell.swift; sourceTree = "<group>"; };
 		4CA97FBB1CA3E5CA001D7D9B /* BITStructs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BITStructs.swift; sourceTree = "<group>"; };
 		4CCA4D3E1CABFD2D0076AF2E /* defaultAvantar.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = defaultAvantar.gif; sourceTree = "<group>"; };
@@ -626,6 +629,7 @@
 		4CD063841C901144003554C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4CD063861C901144003554C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4CD0638B1C901144003554C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4CD06DD31D0520190098D6C8 /* TopTenTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopTenTableViewCell.swift; sourceTree = "<group>"; };
 		4CD91B461C95090400B01D6B /* FourmDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourmDetailViewController.swift; sourceTree = "<group>"; };
 		4CD91B481C955ECA00B01D6B /* FourmTopicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourmTopicCell.swift; sourceTree = "<group>"; };
 		4CD91B4A1C95603800B01D6B /* FourmTopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FourmTopicCell.xib; sourceTree = "<group>"; };
@@ -1245,6 +1249,7 @@
 				4CD91B4A1C95603800B01D6B /* FourmTopicCell.xib */,
 				4C8673BF1C9E5DDE00A89C04 /* TopicDetailTextViewCell.swift */,
 				4CCF730B1CB8A9F000D83268 /* TopicDetailTextViewCell.xib */,
+				4CD06DD31D0520190098D6C8 /* TopTenTableViewCell.swift */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -1289,6 +1294,7 @@
 			children = (
 				4CCF6E3C1CB7B0C900D83268 /* Resources */,
 				4C01438D1C945AD9009A2EBB /* data */,
+				4CCDC3EA1C9A8A4200194C14 /* model */,
 				4CD91B5D1C97EF3B00B01D6B /* controller */,
 				4CCDC3E91C9A89F900194C14 /* view */,
 				4CD91B541C97DF0500B01D6B /* BITUnion-Bridging-Header.h */,
@@ -1319,7 +1325,7 @@
 				4CD91B571C97EAC400B01D6B /* TopicDetailTableViewController.swift */,
 				4C2AF8FC1CD19E4000383A4F /* PostNewTopicViewController.swift */,
 				4C75821E1CFB3F6E00131F96 /* SettingViewController.swift */,
-				4CCDC3EA1C9A8A4200194C14 /* model */,
+				4C7763BD1D0080AC00613AFB /* TopTenTableViewController.swift */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -2654,7 +2660,9 @@
 			files = (
 				4CD91B581C97EAC400B01D6B /* TopicDetailTableViewController.swift in Sources */,
 				4C75821F1CFB3F6E00131F96 /* SettingViewController.swift in Sources */,
+				4CD06DD41D0520190098D6C8 /* TopTenTableViewCell.swift in Sources */,
 				4C35D4211C9109E000797F31 /* FourmListViewController.swift in Sources */,
+				4C7763BE1D0080AC00613AFB /* TopTenTableViewController.swift in Sources */,
 				4C2AF8FD1CD19E4000383A4F /* PostNewTopicViewController.swift in Sources */,
 				4CD063821C901144003554C0 /* LoginViewController.swift in Sources */,
 				4CA97FBC1CA3E5CA001D7D9B /* BITStructs.swift in Sources */,

@@ -30,9 +30,22 @@ DTLazyImageViewDelegate, UIActionSheetDelegate {
   @IBOutlet weak var quote: UIButton!
   static let controller = UIViewController()
   let indicator = UIActivityIndicatorView()
+  var tid = ""
+  var topicText = ""
 
   @IBAction func quoteToPost(sender: AnyObject) {
+    let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+    let navigtionController = storyboard.instantiateViewControllerWithIdentifier("PostNewTopicNavgationViewController") as! UINavigationController
+    let replyViewController = navigtionController.topViewController as! PostNewTopicViewController
+    self.window?.makeKeyAndVisible()
+    replyViewController.isReplay = true
+    replyViewController.tid = self.tid
+    replyViewController.topicText = self.topicText
+    let htmlString =  self.message.attributedString.htmlString()
     
+    // HTML to UBB
+    replyViewController.qutoeText = ""
+    self.window?.rootViewController?.presentViewController(navigtionController, animated: true, completion: nil)
   }
   
   var mediaPlayers = NSMutableSet()
@@ -114,20 +127,7 @@ DTLazyImageViewDelegate, UIActionSheetDelegate {
       let grayView = UIView(frame: frame)
       grayView.backgroundColor = UIColor.blackColor()
   
-      // find a player for this URL if we already got one 
-      
-//      for player in mediaPlayers {
-//        if player.absoluteURL.isEqualToURL(url) {
-//          break
-//        }
-//      }
       let playerItem = AVPlayerItem(URL: url)
-      
-//      if let controlsAttr = attachment.attributes["controls"] as? String {
-//
-//      }
-      
-      
       let player = AVPlayer(playerItem: playerItem)
       let playerLayer = AVPlayerLayer(player: player)
       playerLayer.frame = grayView.bounds

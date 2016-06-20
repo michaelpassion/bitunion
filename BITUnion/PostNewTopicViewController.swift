@@ -16,7 +16,12 @@ class PostNewTopicViewController: UIViewController, UITextViewDelegate, UIImageP
   var attachment = 1
   var attachImage: UIImage?
   var hud:MBProgressHUD?
-
+  var isReplay = false
+  var tid = ""
+  
+  var topicText = ""
+  var qutoeText = ""
+ 
   
   @IBOutlet weak var cancelButton: UIBarButtonItem!
   @IBOutlet weak var finishButton: UIBarButtonItem!
@@ -68,22 +73,35 @@ class PostNewTopicViewController: UIViewController, UITextViewDelegate, UIImageP
   }
   
   @IBAction func finishEdit(sender: UIBarButtonItem) {
-    
     let whitespace = NSCharacterSet.whitespaceAndNewlineCharacterSet()
     let subject = subjectTextField.text?.stringByTrimmingCharactersInSet(whitespace)
     let message = newThreadTextView.text
     let attachFlag = attachImage == nil ? 0 : 1
-    let parameters:NSDictionary = [
-      "action":"newthread",
-      "username":AppData.sharedInstance.username,
-      "session":AppData.sharedInstance.session,
-      "fid":fid,
-      "subject": subject!,
-      "message": message,
-      "attachment": attachFlag
-    ]
+    var parameters = [:]
+    if isReplay {
+      parameters = [
+        "action":"newreply",
+        "username":AppData.sharedInstance.username,
+        "session":AppData.sharedInstance.session,
+        "tid":tid,
+        "subject": subject!,
+        "message": message,
+        "attachment": attachFlag
+      ]
+
+    } else {
+      parameters = [
+        "action":"newthread",
+        "username":AppData.sharedInstance.username,
+        "session":AppData.sharedInstance.session,
+        "fid":fid,
+        "subject": subject!,
+        "message": message,
+        "attachment": attachFlag
+      ]
+
+    }
     
-    print(parameters)
     let data = try! NSJSONSerialization.dataWithJSONObject(parameters, options: .PrettyPrinted)
     print(parameters)
     UIApplication.sharedApplication().networkActivityIndicatorVisible = true
@@ -108,6 +126,7 @@ class PostNewTopicViewController: UIViewController, UITextViewDelegate, UIImageP
         case .Success(let upload, _, _):
           upload.validate()
           self.hud = MBProgressHUD(forView: self.view)
+          self.hud?.show(true)
           upload.progress { bytesWritten, totalBytesWritten, totalBytesExpectedToWrite in
             dispatch_async(dispatch_get_main_queue()) { [unowned self] in
               let percent = (Float(totalBytesWritten) / Float(totalBytesExpectedToWrite))
@@ -116,13 +135,16 @@ class PostNewTopicViewController: UIViewController, UITextViewDelegate, UIImageP
           }
           upload.responseJSON { response in
             debugPrint(response)
+            self.dismissViewControllerAnimated(true, completion: nil)
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
           }
         case .Failure(let encodingError):
           print(encodingError)
+          self.dismissViewControllerAnimated(true, completion: nil)
+          UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         }
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+       
     })
-//    self.dismissViewControllerAnimated(true, completion: nil)
   }
   
   
@@ -134,6 +156,7 @@ class PostNewTopicViewController: UIViewController, UITextViewDelegate, UIImageP
     self.finishButton.enabled = false
     self.newThreadTextView.becomeFirstResponder()
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow), name: UIKeyboardWillShowNotification, object: nil)
+    self.subjectTextField.text = self.topicText
 
   }
   
