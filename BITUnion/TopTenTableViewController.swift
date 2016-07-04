@@ -33,7 +33,6 @@ class TopTenTableViewController: UITableViewController {
     if AppData.sharedInstance.isLogin {
       performSearch()
     }
-//    self.tabBarController?.tabBar.hidden = false
   }
 
   func performSearch() {
@@ -100,7 +99,7 @@ class TopTenTableViewController: UITableViewController {
   }
   
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//    tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    tableView.deselectRowAtIndexPath(indexPath, animated: true)
 //    performSegueWithIdentifier("TopicDetail", sender: tableView.cellForRowAtIndexPath(indexPath))
   }
   

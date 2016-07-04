@@ -81,6 +81,14 @@ class TopicDetailTableViewController: UITableViewController
     
   }
   
+  
+  func tappedOnAvantar(sender:UITapGestureRecognizer)  {
+    let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+    let navigationCon = storyboard.instantiateViewControllerWithIdentifier("personalInfoNavController") as! UINavigationController
+    let personalInfo = navigationCon.topViewController as! PersonalInfoTableViewController;
+    
+    self.navigationController?.pushViewController(personalInfo, animated: true)
+  }
   func performSearch() {
 
     let parameters = [
@@ -101,7 +109,6 @@ class TopicDetailTableViewController: UITableViewController
       encoding: .JSON,
       headers: nil)
     
-    weak var weakself = self
     if let _ = request {
       self.request!.response {
         (request, response, data, error) -> Void in
@@ -112,27 +119,29 @@ class TopicDetailTableViewController: UITableViewController
               let topicDetail:NSDictionary =  try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments) as! NSDictionary
               
               if AppData.checkIfSessionTimeOut(topicDetail) {
-                AppData.updateSession() { () in
-                weakself?.performSearch()
+                AppData.updateSession() { [unowned self] in
+                self.performSearch()
                 }
               }
               
               if let objects = topicDetail.objectForKey("postlist") as? NSArray {
                 let range = NSRange(location: self.from, length: objects.count)
-                weakself?.topicDetailList.insertObjects(objects as [AnyObject], atIndexes: NSIndexSet(indexesInRange: range))
+                self.topicDetailList.insertObjects(objects as [AnyObject], atIndexes: NSIndexSet(indexesInRange: range))
               } else {
                 
               }
               
-              dispatch_async(dispatch_get_main_queue()) {
-                weakself!.tableView.reloadData()
-                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+              dispatch_async(dispatch_get_main_queue()) { [unowned self] in
+                self.tableView.reloadData()
                 
                 if self.tableView.mj_header.state == MJRefreshState.Refreshing {
-                  weakself!.header.endRefreshing()
+                  self.header.endRefreshing()
                 } else if self.tableView.mj_footer.state == MJRefreshState.Refreshing {
-                  weakself!.footer.endRefreshing()
+                  self.footer.endRefreshing()
                 }
+                
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                
               }
               
             } catch {
@@ -260,6 +269,11 @@ class TopicDetailTableViewController: UITableViewController
       // avatar
       cell.avatar.layer.cornerRadius = cell.avatar.frame.width / 2
       cell.avatar.layer.masksToBounds = true
+    
+    //touch upinside the avantar and push in personal information
+    cell.avatar.userInteractionEnabled = true;
+    let tap = UITapGestureRecognizer(target: self, action: #selector(tappedOnAvantar(_:)))
+    cell.avatar.addGestureRecognizer(tap)
     
       if let avatarURL = dict.objectForKey("avatar") as? String {
         let a = avatarURL.stringByRemovingPercentEncoding

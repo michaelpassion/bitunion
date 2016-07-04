@@ -99,16 +99,6 @@ DTLazyImageViewDelegate, UIActionSheetDelegate {
       imageView.shouldShowProgressiveDownload = true
       imageView.contentMode = .ScaleAspectFit
       
-//      let HUD = MBProgressHUD.showHUDAddedTo(imageView, animated: true)
-//      HUD.mode = .Indeterminate
-//      HUD.showAnimated(true, whileExecutingBlock: { 
-//        dispatch_async(dispatch_get_main_queue(), { 
-//          <#code#>
-//        })
-//      })
-
-      
-      //url for deferred loading
       imageView.url = attachment.contentURL
 
       
@@ -171,7 +161,7 @@ DTLazyImageViewDelegate, UIActionSheetDelegate {
     button.setImage(highlightImage, forState: .Highlighted)
     
     //use normal push action for opening URL
-    button.addTarget(self, action: #selector(picturePushed(_:)), forControlEvents:.TouchUpInside)
+    button.addTarget(self, action: #selector(urlClicked(_:)), forControlEvents:.TouchUpInside)
     
     // demonstrate combination with long press
     let longPress = UILongPressGestureRecognizer(target: self, action: #selector(linkLongPressed(_:)))
@@ -181,7 +171,7 @@ DTLazyImageViewDelegate, UIActionSheetDelegate {
     
   }
   
-  func picturePushed(gestrue:UILongPressGestureRecognizer)  {
+  func urlClicked(gestrue:UITapGestureRecognizer)  {
     print("")
   }
   
