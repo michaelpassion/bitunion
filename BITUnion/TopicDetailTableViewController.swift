@@ -16,7 +16,7 @@ import SDWebImage
 class TopicDetailTableViewController: UITableViewController
    {
   
-  let getImageRootURL = "http://out.bitunion.org/"
+  var getImageRootURL = "http://out.bitunion.org/"
   var tid:String = ""
   var from = 0
   var totalNum = 0
@@ -50,6 +50,7 @@ class TopicDetailTableViewController: UITableViewController
     
     self.tableView.mj_header.beginRefreshing()
     self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.Plain, target:nil, action:nil)
+    
   }
   
   
@@ -85,7 +86,19 @@ class TopicDetailTableViewController: UITableViewController
   func tappedOnAvantar(sender:UITapGestureRecognizer)  {
     let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
     let navigationCon = storyboard.instantiateViewControllerWithIdentifier("personalInfoNavController") as! UINavigationController
-    let personalInfo = navigationCon.topViewController as! PersonalInfoTableViewController;
+    
+    //using sender, we can geti the point in respect to the talbe
+    let tapLocation = sender.locationInView(self.tableView)
+    
+    //using the tapLocation, we retrieve the corresponding indexPath
+    let indexPath = self.tableView.indexPathForRowAtPoint(tapLocation)
+    
+    //get the cell from the index
+    let cell = self.tableView.cellForRowAtIndexPath(indexPath!) as! TopicDetailTextViewCell
+    
+    let personalInfo = navigationCon.topViewController as! PersonalInfoTableViewController
+    personalInfo.queryName = cell.author.text!
+    personalInfo.avatarImage = cell.avatar.image;
     
     self.navigationController?.pushViewController(personalInfo, animated: true)
   }
@@ -132,7 +145,7 @@ class TopicDetailTableViewController: UITableViewController
               }
               
               dispatch_async(dispatch_get_main_queue()) { [unowned self] in
-                self.tableView.reloadData()
+                self.tableView?.reloadData()
                 
                 if self.tableView.mj_header.state == MJRefreshState.Refreshing {
                   self.header.endRefreshing()
@@ -227,11 +240,26 @@ class TopicDetailTableViewController: UITableViewController
       
       let width = self.view.bounds.width / 2
     
-      var sEncode = msg.stringByReplacingOccurrencesOfString("+", withString: " ").stringByReplacingOccurrencesOfString("border=\"0\" width=\"100%\" cellspacing=\"1\" cellpadding=\"10\"", withString: "").stringByReplacingOccurrencesOfString("bgcolor=\"BORDERCOLOR\"", withString: "style=\"color: grey ;text-align:left; border-left: solid grey; font-family:Arial, Helvetica, sans-serif\"").stringByReplacingOccurrencesOfString("<img src=\"../images/smilies/", withString: "<img src=\"").stringByReplacingOccurrencesOfString("src=\"../images/bz/", withString: "src=\"").stringByReplacingOccurrencesOfString("<img src=\"http", withString: "<img  style=\"width:\(width)px; height:\(width)px align:center\" src=\"http").stringByReplacingOccurrencesOfString("<tr><td>&nbsp;&nbsp;引用:</td></tr>", withString: "").stringByReplacingOccurrencesOfString("<td", withString: "<td style=\"padding-left:15px\" ")
+      var sEncode = msg.stringByReplacingOccurrencesOfString("+", withString: " ")
+        .stringByReplacingOccurrencesOfString("border=\"0\" width=\"100%\" cellspacing=\"1\" cellpadding=\"10\"", withString: "")
+        .stringByReplacingOccurrencesOfString("bgcolor=\"BORDERCOLOR\"", withString: "style=\"color: grey ;text-align:left; border-left: solid grey; font-family:Arial, Helvetica, sans-serif\"")
+        .stringByReplacingOccurrencesOfString("<img src=\"../images/smilies/", withString: "<img src=\"")
+        .stringByReplacingOccurrencesOfString("src=\"../images/bz/", withString: "src=\"")
+        .stringByReplacingOccurrencesOfString("<img src=\"http", withString: "<img  style=\"width:\(width)px; height:\(width)px align:center\" src=\"http")
+        .stringByReplacingOccurrencesOfString("<tr><td>&nbsp;&nbsp;引用:</td></tr>", withString: "")
+        .stringByReplacingOccurrencesOfString("<td", withString: "<td style=\"padding-left:15px\" ")
       
+      if let regex = try? NSRegularExpression(pattern: "<img src=..[/\\w*]+.\\w*>(&nbsp; ?)*", options: .CaseInsensitive) {
+        let tmpString = regex.stringByReplacingMatchesInString(sEncode, options: .WithTransparentBounds, range: NSMakeRange(0, sEncode.characters.count), withTemplate: "")
+        
+        // the regex should have removed <img src=../images/cf/n.gif>, but somehow haven't
+        sEncode = tmpString.stringByReplacingOccurrencesOfString("<img src=../images/cf/n.gif>", withString: "")
+      
+      }
+    
       
       if let attachment = dict["attachment"] as? String where
-        attachment != "<null>" {
+        attachment != "<null>" && AppData.sharedInstance.showImage {
         let imageURL = getImageRootURL + attachment
         let imgTag = "<center><img  style=\"width:\(width)px; height:\(width)px align:center \" src=\"" + imageURL + "\"> </center>"
 
@@ -275,6 +303,8 @@ class TopicDetailTableViewController: UITableViewController
     let tap = UITapGestureRecognizer(target: self, action: #selector(tappedOnAvantar(_:)))
     cell.avatar.addGestureRecognizer(tap)
     
+    
+    // the user avatar
       if let avatarURL = dict.objectForKey("avatar") as? String {
         let a = avatarURL.stringByRemovingPercentEncoding
         let b = a?.stringByReplacingOccurrencesOfString("+", withString: " ")

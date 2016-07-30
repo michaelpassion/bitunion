@@ -11,6 +11,13 @@ import Alamofire
 
 class SettingViewController: UITableViewController {
 
+  @IBAction func showImageOrNot(sender: AnyObject) {
+      AppData.sharedInstance.showImage = !AppData.sharedInstance.showImage
+    }
+  
+  @IBAction func isOutofSchool(sender: AnyObject) {
+      AppData.sharedInstance.isOutofSchool = !AppData.sharedInstance.isOutofSchool
+  }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,7 +48,9 @@ class SettingViewController: UITableViewController {
   
   func logout() {
         
-    let urlString = "http://out.bitunion.org/open_api/bu_logging.php"
+//    let urlString = "http://out.bitunion.org/open_api/bu_logging.php"
+    let urlString = AppData.getPostURLWithlastComponent("bu_logging.php")
+    
     let parameters = ["action":"logout",
                      "username": AppData.sharedInstance.username,
                      "password": AppData.sharedInstance.password,

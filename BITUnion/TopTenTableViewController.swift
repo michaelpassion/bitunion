@@ -18,27 +18,40 @@ class TopTenTableViewController: UITableViewController {
   let header = MJRefreshNormalHeader()
   let footer = MJRefreshAutoStateFooter()
   var request: Alamofire.Request?
+  var firstTime = false;
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    header.setRefreshingTarget(self, refreshingAction: #selector(TopTenTableViewController.performSearch))
+    
+    tableView.tableFooterView = UIView(frame: CGRect.zero)
+    tableView.tableHeaderView = UIView(frame: CGRect.zero)
+
+    header.setRefreshingTarget(self, refreshingAction: #selector(performSearch))
     self.tableView.mj_header = header
     header.lastUpdatedTimeLabel.hidden = true
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 100.0;
+    
+//    if AppData.sharedInstance.isLogin {
+//      self.tableView.mj_header.beginRefreshing()
+//    }
   }
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
-    if AppData.sharedInstance.isLogin {
+    if !firstTime && AppData.sharedInstance.isLogin{
       performSearch()
+      firstTime = true
     }
   }
 
   func performSearch() {
+    
     let parameters = [
       "username":AppData.sharedInstance.username,
       "session":AppData.sharedInstance.session]
+    self.tableView.mj_header.beginRefreshing()
+
     UIApplication.sharedApplication().networkActivityIndicatorVisible = true
     
     self.request?.cancel()
@@ -75,7 +88,7 @@ class TopTenTableViewController: UITableViewController {
                 print("there is not top ten")
 
               }
-              dispatch_async(dispatch_get_main_queue()) {
+              dispatch_async(dispatch_get_main_queue()) { [unowned self] in
                 self.tableView.reloadData()
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                 
@@ -100,7 +113,6 @@ class TopTenTableViewController: UITableViewController {
   
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
-//    performSegueWithIdentifier("TopicDetail", sender: tableView.cellForRowAtIndexPath(indexPath))
   }
   
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -117,9 +129,21 @@ class TopTenTableViewController: UITableViewController {
 
   func configureCell(cell: UITableViewCell, withDictionary dict:NSDictionary) {
     let cell = cell as! TopTenTableViewCell
-    let htmlString = dict.objectForKey("pname")!.stringByRemovingPercentEncoding
-    let attributedString = htmlString!!.stringByReplacingOccurrencesOfString("+", withString: " ")
-    cell.subject.text = attributedString
+    
+    let tmp = dict.objectForKey("pname")!.stringByRemovingPercentEncoding!!.stringByReplacingOccurrencesOfString("+", withString: " ")
+    let htmlString = "<span style=\"font-family: system; font-size: 16\">\(tmp)</span>"
+    
+    let encodedData = htmlString.dataUsingEncoding(NSUnicodeStringEncoding)!
+    let attributedOptions = [
+      NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType]
+    do {
+      let attributedString = try NSAttributedString(data: encodedData, options: attributedOptions, documentAttributes: nil)
+      cell.subject.attributedText = attributedString
+    } catch _ {
+      print("cannot create attribted String")
+    }
+    
+
     
     if let url = dict["avatar"] as? String {
       let urlString = getImageRootURL + url.stringByRemovingPercentEncoding!
@@ -136,7 +160,8 @@ class TopTenTableViewController: UITableViewController {
       let replayAuthor = (replyDict["who"] as? String)! + "回复了主题"
       cell.replayAuthorLabel.text = replayAuthor.stringByRemovingPercentEncoding
       let timeString = replyDict["when"] as? String
-      cell.replyTimeLabel.text = timeString
+      let time = timeString!.stringByRemovingPercentEncoding?.stringByReplacingOccurrencesOfString("+", withString: " ")
+      cell.replyTimeLabel.text = convertDatetoRelativeTime(time!)
       let tid = dict["tid"] as! String
       cell.tid = tid
       let totalNum = dict["tid_sum"] as! String
@@ -145,7 +170,28 @@ class TopTenTableViewController: UITableViewController {
   }
   
   func convertDatetoRelativeTime(time:String) -> String {
-    return ""
+    let dateForMatter = NSDateFormatter()
+    dateForMatter.dateFormat="yyyy-MM-dd HH:mm"
+    let date = dateForMatter.dateFromString(time)
+    
+    let now = NSDate()
+    var timeInterval = now.timeIntervalSinceDate(date!)
+    
+    var result:String?
+    
+    if (timeInterval < 60) {
+      result = "刚刚"
+    } else if ( timeInterval < 60 * 60) {
+      result = "\(Int(timeInterval/60))分钟前"
+    } else if (timeInterval < 60 * 60 * 24) {
+      result = "\(Int(timeInterval/(60*60)))小时前"
+    } else if (timeInterval < 60*60*24*30) {
+      result = "\(Int(timeInterval/(60*60*24)))天前"
+    } else {
+      return time
+    }
+    
+    return result!
   }
 
   override func viewWillDisappear(animated: Bool) {
@@ -167,7 +213,6 @@ class TopTenTableViewController: UITableViewController {
       controller.topicTitle = cell.subject.text!
 
     }
-
   }
   
 }

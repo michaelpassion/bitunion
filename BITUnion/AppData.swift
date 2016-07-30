@@ -18,6 +18,7 @@ class AppData {
   var password = ""
   var isOutofSchool = true
   var test = 0
+  var showImage = true
   
   
  class func checkIfSessionTimeOut(dict: NSDictionary) -> Bool {
@@ -36,13 +37,14 @@ class AppData {
                       "username":AppData.sharedInstance.username,
                       "password":AppData.sharedInstance.password]
     
-//    UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-//
-//    let hud = MBProgressHUD(window:UIApplication.sharedApplication().keyWindow)
-//    hud.mode = .AnnularDeterminate
-//    hud.labelText = "重新登录中"
-//    hud.show(true)
-//    
+    UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+
+    let hud = MBProgressHUD(window:UIApplication.sharedApplication().keyWindow)
+    hud.mode = .AnnularDeterminate
+    hud.labelText = "重新登录中"
+    hud.show(true)
+    
+    
     let urlString = AppData.getPostURLWithlastComponent("bu_logging.php")
     Alamofire.request(.POST, urlString, parameters: parameters, encoding: .JSON, headers: nil).response(completionHandler: { (urlRequest, response, data, error) -> Void in
       UIApplication.sharedApplication().networkActivityIndicatorVisible = false

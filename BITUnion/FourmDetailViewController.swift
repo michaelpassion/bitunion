@@ -60,12 +60,6 @@ class FourmDetailViewController: UITableViewController {
     tableView.registerNib(cellNib, forCellReuseIdentifier: "FourmTopicCellIdentifier")
   }
   
-//  func showloginScreen(animated: Bool) {
-//    let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-//    let loginViewController = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
-//    self.presentViewController(loginViewController, animated: animated, completion: nil)
-//  }
-//  
   func performSearch() {
     
     
@@ -163,9 +157,23 @@ class FourmDetailViewController: UITableViewController {
   
   func configureCell(cell: UITableViewCell, withDictionary dict:NSDictionary) {
     let cell = cell as! FourmTopicCell
-    let htmlString = dict.objectForKey("subject")!.stringByRemovingPercentEncoding
-    let attributedString = htmlString!!.stringByReplacingOccurrencesOfString("+", withString: " ")
-    cell.topicLabel?.attributedText = NSAttributedString(string:attributedString)
+
+    let tmp = dict.objectForKey("subject")!.stringByRemovingPercentEncoding!!.stringByReplacingOccurrencesOfString("+", withString: " ")
+    let htmlString = "<span style=\"font-family: system; font-size: 16\">\(tmp)</span>"
+    let encodedData = htmlString.dataUsingEncoding(NSUnicodeStringEncoding)!
+    let attributedOptions = [
+      NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
+      NSFontAttributeName: UIFontTextStyleTitle1]
+    
+    do {
+      let attributedString = try NSAttributedString(data: encodedData, options: attributedOptions, documentAttributes: nil)
+      cell.topicLabel?.attributedText = attributedString
+      cell.topicLabel.font.fontWithSize(21)
+    } catch _ {
+      print("cannot create attribted String")
+    }
+   
+//    cell.topicLabel?.attributedText = NSAttributedString(string:htmlString)
     cell.authorLabel.text = dict.objectForKey("author")?.stringByRemovingPercentEncoding
     let replies = dict.objectForKey("replies") as! String
     let views = dict.objectForKey("views") as! String

@@ -13,8 +13,6 @@ import Alamofire
 
 class LoginViewController: UIViewController {
   
-  var isOutofSchool:Bool = true
-  
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
@@ -37,7 +35,7 @@ class LoginViewController: UIViewController {
                         "username":name,
                         "password":psw]
 
-          UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+//          UIApplication.sharedApplication().networkActivityIndicatorVisible = true
           
           let urlString = AppData.getPostURLWithlastComponent("bu_logging.php")
           
